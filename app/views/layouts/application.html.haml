@@ -1,0 +1,87 @@
+!!!
+%html
+  %head
+    %title Студия веб-дизайна ARTLevelDesign
+    =# %link{href: 'assets/main.css', rel: "stylesheet", type: "text/css" }
+    = stylesheet_link_tag 'application', :media => "all"# 'main.css'
+    = javascript_include_tag 'application.js', 'main_effect.js'
+    = csrf_meta_tag
+  %body
+    #container
+      #head
+        #head_cent
+          #head_top
+            #left-menu
+              %ul
+                %li
+                  %a.home{:href=>"#"} &nbsp;
+                %li
+                  %a.tree{:href=>"#"} &nbsp;
+                %li
+                  %a.mail{:href=>"#"} &nbsp;
+                %li
+                  %span создание сайтов
+          #head_center
+            #right-menu
+              %ul
+                %li
+                  = link_to 'главная', :root
+                %li
+                  = link_to 'услуги', article_path(Article.find_by_slug('uslugi'))
+                %li
+                  = link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
+            .clear
+            %h3.logo
+              = link_to 'ARTLevel_Design', :root
+            #navigation-block
+              %ul#sliding-navigation
+                - @article_services.children.each do |art|
+                  %li.sliding-element
+                    = link_to art.title, article_path(art)            
+          #head_bottom
+      #content
+        #content_cent
+          #content_sup
+            -##line_news
+            -#  %p
+            -#    Приветствуем Вас на нашем сайте. Здесь Вы найдете много полезной информации. Разделы сайта расчитаны на широкую аудиторию рекламодателей...
+            -#    %a{:href=>"#"} читать дальше...
+            -#  %ul
+            -#    %li
+            -#      %a{:href=>"#"} Новости из мира дизайна
+            -#    %li
+            -#      %a{:href=>"#"} Программирование от и до
+            -#    %li
+            -#      %a{:href=>"#"} Творческий подход, что это?
+            -#  %ul
+            -#    %li
+            -#      %a{:href=>"#"} Хотите спросить почему мы?
+            -#    %li
+            -#      %a{:href=>"#"} Сто лучших вопросов зачем?
+            -#    %li
+            -#      %a{:href=>"#"} Сто лучших ответов...
+            %br/
+            %br/
+            %br/
+            %br/            
+            = yield
+            .clear
+            %span.angle_welcom &nbsp;
+            %span.line_welcom &nbsp;
+    #rasporka
+    #footer
+      #footer_center
+        #logo_footer
+          %h6
+            = link_to 'ARTLevel_Design', :root
+        #footer-menu
+          %ul
+            %li
+              = link_to 'главная', :root
+            %li
+              = link_to 'услуги', article_path(Article.find_by_slug('uslugi'))
+            %li
+              = link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
+        %p &copy; ARTLevelDesign. Все права защищены.Разработчик: ARTLevelDesign
+        #line_footer
+          %img{:src=>"img/line_footer.gif", :height=>"50", :width=>"2", :alt=>"полоса"}
