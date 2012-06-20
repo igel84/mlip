@@ -31,7 +31,7 @@ ssh_options[:forward_agent] = true
 
 # Имя вашего проекта в панели управления.
 # Не меняйте это значение без необходимости, оно используется дальше.
-set :application,     "dou-vrn"
+set :application,     "mlip"
 
 # Сервер размещения проекта.
 set :deploy_server,   "lithium.locum.ru"
@@ -66,7 +66,7 @@ set :scm,             :git
 # домашнем каталоге в подкаталоге git/<имя проекта>.git.
 # Подробнее о создании репозитория читайте в нашем блоге
 # http://locum.ru/blog/hosting/git-on-locum
-set :repository,      "git://github.com/igel84/dou-vrn.git"
+set :repository,      "git://github.com/igel84/mlip.git"
 
 ## Если ваш репозиторий в GitHub, используйте такую конфигурацию
 # set :repository,    "git@github.com:username/project.git"
