@@ -2,7 +2,7 @@
 %html
   %head
     %title Студия веб-дизайна ARTLevelDesign
-    %link{:rel=>"shortcut icon", :href=>'assets/favicon.ico'}
+    %link{:rel=>"shortcut icon", :href=>'/assets/favicon.ico'}
     = stylesheet_link_tag 'application', :media => "all"# 'main.css'
     = javascript_include_tag 'application.js', 'main_effect.js'
     = javascript_include_tag params[:controller]
@@ -85,7 +85,7 @@
               = link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
         %p &copy; ARTLevelDesign. Все права защищены.Разработчик: ARTLevelDesign
         #line_footer
-          %img{:src=>"assets/line_footer.gif", :height=>"50", :width=>"2", :alt=>"полоса"}
+          %img{:src=>"/assets/line_footer.gif", :height=>"50", :width=>"2", :alt=>"полоса"}
     %script{type: "text/javascript"}
       (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter15522727 = new Ya.Metrika({id:15522727, enableAll: true, webvisor:true}); } catch(e) {} }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); } })(document, window, "yandex_metrika_callbacks");
     %noscript
