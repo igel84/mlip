@@ -14,31 +14,22 @@
           #head_top
             #left-menu
               %ul
-                %li
-                  %a.home{:href=>"#"} &nbsp;
-                %li
-                  %a.tree{:href=>"#"} &nbsp;
-                %li
-                  %a.mail{:href=>"#"} &nbsp;
-                %li
-                  %span создание сайтов
+                %li= link_to ' ', :root, class: 'home', title: 'домой'
+                %li= link_to ' ', tree_articles_path, class: 'tree', title: 'структура сайта'
+                %li= link_to ' ', 'mailto:admin@mlip.ru', class: 'mail', title: 'написать письмо в веб-студию'
+                %li= content_tag(:span, 'создание сайтов')
           #head_center
             #right-menu
               %ul
-                %li
-                  = link_to 'главная', :root
-                %li
-                  = link_to 'услуги', article_path(Article.find_by_slug('uslugi'))
-                %li
-                  = link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
+                %li= link_to 'главная', :root
+                %li= link_to 'услуги', article_path(Article.find_by_slug('uslugi'))
+                %li= link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
             .clear
-            %h3.logo
-              = link_to 'ARTLevel_Design', :root
+            %h3.logo= link_to 'ARTLevel_Design', :root
             #navigation-block
               %ul#sliding-navigation
                 - @article_services.children.each do |art|
-                  %li.sliding-element
-                    = link_to art.title, article_path(art)            
+                  %li.sliding-element= link_to art.title, article_path(art)            
           #head_bottom
       #content
         #content_cent
@@ -73,16 +64,12 @@
     #footer
       #footer_center
         #logo_footer
-          %h6
-            = link_to 'ARTLevel_Design', :root
+          %h6= link_to 'ARTLevel_Design', :root
         #footer-menu
           %ul
-            %li
-              = link_to 'главная', :root
-            %li
-              = link_to 'услуги', article_path(Article.find_by_slug('uslugi'))
-            %li
-              = link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
+            %li= link_to 'главная', :root
+            %li= link_to 'услуги', article_path(Article.find_by_slug('uslugi'))
+            %li= link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
         %p &copy; ARTLevelDesign. Все права защищены.Разработчик: ARTLevelDesign
         #line_footer
           %img{:src=>"/assets/line_footer.gif", :height=>"50", :width=>"2", :alt=>"полоса"}

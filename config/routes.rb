@@ -7,7 +7,11 @@ InitialRelease::Application.routes.draw do
   
   root :to => 'Articles#index'
 
-  resources :articles, :galeries
+  resources :articles do
+    get :tree, :on => :collection
+  end
+
+  resources :galeries
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
