@@ -1,5 +1,11 @@
-$(document).ready( ->
-  $('a.fancybox').fancybox({
+$(document).ready(function () {
+  
+  $('#welcom img').each(function(){
+    var href = $(this).attr('src');
+    $(this).wrap('<a href='+href+' class="fancybox"></a>');
+  });
+
+  $('#welcom .fancybox').fancybox({
     maxWidth: 800,
     maxHeight: 600,
     fitToView: false,
@@ -11,6 +17,5 @@ $(document).ready( ->
     closeEffect: 'elastic',
     prevEffect: 'fade',
     nextEffect: 'fade',
-  })
-
-)
+  });
+});
