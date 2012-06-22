@@ -16,7 +16,7 @@
               %ul
                 %li= link_to ' ', :root, class: 'home', title: 'домой'
                 %li= link_to ' ', tree_articles_path, class: 'tree', title: 'структура сайта'
-                %li= link_to ' ', 'mailto:admin@mlip.ru', class: 'mail', title: 'написать письмо в веб-студию'
+                %li= mail_to "admin@mlip.ru", '', subject: 'письмо в веб-студию', encode: "javascript", class: 'mail', title: 'написать письмо в веб-студию'
                 %li= content_tag(:span, 'создание сайтов')
           #head_center
             #right-menu
