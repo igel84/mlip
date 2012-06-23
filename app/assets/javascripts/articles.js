@@ -1,8 +1,9 @@
 $(document).ready(function () {
   
   $('#welcom img').each(function(){
-    var href = $(this).attr('src');
-    $(this).wrap('<a href='+href+' class="fancybox"></a>');
+    var href = $(this).attr('src').replace('content', 'original');
+    var title = $(this).attr('alt');
+    $(this).wrap('<a href="'+href+'" class="fancybox" title="'+title+'"></a>');
   });
 
   $('#welcom .fancybox').fancybox({
