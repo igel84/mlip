@@ -1,13 +1,19 @@
 InitialRelease::Application.routes.draw do
+  get '/users/sign_up' => 'Articles#show', id: 1
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
   
   mount Ckeditor::Engine => '/ckeditor'
   
-  root :to => 'Articles#index'
+  root :to => 'Articles#show', id: 1
 
-  resources :articles, :galeries
+  resources :articles do
+    get :tree, :on => :collection
+  end
+
+  resources :galeries
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
