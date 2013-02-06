@@ -1,11 +1,11 @@
-#welcom
+#welcom{style: "#{@article.title.length > 20 ? 'background:url(/assets/crosslines-two-third.png) no-repeat right -5px;' : ''}"}
 	%h1= content_tag(:span, @article.title[0])+@article.title[1, @article.title.length-1]
 	%br/
-	!= @article.body
+	!= @article.title == 'Контакты' ? @article.body : highlight(@article.body, seo_keywords.split(' '), highlighter: '<strong>\1</strong>')
 	- if @article.children != []
 		- @article.children.each do |art|
 			%p.intro
-				= link_to truncate(art.title, :ommission => '...', :length => 50), article_path(art), :title => art.title
+				= link_to truncate(art.title, :ommission => '...', :length => 50), article_path(art), :title => art.seo_title
 			.child-info
 				=# 
 			%div{:style=>"clear:both; margin: 10px; height: 10px;"}

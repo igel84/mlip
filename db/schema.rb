@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 13) do
+ActiveRecord::Schema.define(:version => 14) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -20,9 +20,12 @@ ActiveRecord::Schema.define(:version => 13) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "slug"
+    t.string   "seo_description"
+    t.string   "seo_keywords"
+    t.string   "seo_title"
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true

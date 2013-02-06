@@ -14,7 +14,10 @@ RailsAdmin.config do |config|
       configure :children, :has_many_association   #   # Found columns:      
       configure :id, :integer       
       configure :title, :string 
-      configure :body, :text       
+      configure :body, :text
+      configure :seo_description, :string
+      configure :seo_keywords, :string
+      configure :seo_title, :string       
       #configure :created_at, :datetime 
       #configure :updated_at, :datetime 
       configure :slug, :string       
@@ -34,7 +37,10 @@ RailsAdmin.config do |config|
       #  visible false
       #end
       #field :parent, :belongs_to_association
-      field :title, :string 
+      field :title, :string
+      field :seo_description, :string
+      field :seo_keywords, :string
+      field :seo_title, :string 
       field :body, :text do
         ckeditor do 
           true

@@ -1,7 +1,11 @@
 !!!
 %html
   %head
-    %title Студия веб-дизайна ARTLevelDesign
+    %meta{:charset=>"utf-8"}
+    %meta{:name=>"description", :content=>"#{@article.seo_description}"}
+    %meta{:name=>"keywords", :content=>"#{@article.seo_keywords}"}
+    %meta{:name=>"author", :content=>"ARTLeveDesign"}
+    %title= title
     %link{:rel=>"shortcut icon", :href=>'/assets/favicon.ico'}
     %meta{:name=>'yandex-verification', :content=>'7f6db4be469ce9ed'}
     = stylesheet_link_tag 'application', :media => "all"# 'main.css'
@@ -15,53 +19,35 @@
           #head_top
             #left-menu
               %ul
-                %li
-                  %a.home{:href=>"#"} &nbsp;
-                %li
-                  %a.tree{:href=>"#"} &nbsp;
-                %li
-                  %a.mail{:href=>"#"} &nbsp;
-                %li
-                  %span создание сайтов
+                %li= link_to ' ', :root, class: 'home', title: 'на главную'
+                %li= link_to ' ', tree_articles_path, class: 'tree', title: 'структура сайта'
+                %li= mail_to "admin@mlip.ru", '', subject: 'письмо в веб-студию', encode: "javascript", class: 'mail', title: 'написать письмо в веб-студию'
+                %li= content_tag(:span, 'создание сайтов')
           #head_center
             #right-menu
               %ul
-                %li
-                  = link_to 'главная', :root
-                %li
-                  = link_to 'услуги', article_path(Article.find_by_slug('uslugi'))
-                %li
-                  = link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
+                - @top_menu.each do |art|
+                  %li= link_to art.title, article_path(art), title: art.seo_title
             .clear
-            %h3.logo
-              = link_to 'ARTLevel_Design', :root
+            %h3.logo= link_to 'ARTLevel_Design', :root
             #navigation-block
               %ul#sliding-navigation
-                - @article_services.children.each do |art|
-                  %li.sliding-element
-                    = link_to art.title, article_path(art)            
+                - @service_articles.each do |art|
+                  %li.sliding-element= link_to art.title, article_path(art), title: art.seo_title            
           #head_bottom
       #content
         #content_cent
           #content_sup
-            -##line_news
-            -#  %p
-            -#    Приветствуем Вас на нашем сайте. Здесь Вы найдете много полезной информации. Разделы сайта расчитаны на широкую аудиторию рекламодателей...
-            -#    %a{:href=>"#"} читать дальше...
-            -#  %ul
-            -#    %li
-            -#      %a{:href=>"#"} Новости из мира дизайна
-            -#    %li
-            -#      %a{:href=>"#"} Программирование от и до
-            -#    %li
-            -#      %a{:href=>"#"} Творческий подход, что это?
-            -#  %ul
-            -#    %li
-            -#      %a{:href=>"#"} Хотите спросить почему мы?
-            -#    %li
-            -#      %a{:href=>"#"} Сто лучших вопросов зачем?
-            -#    %li
-            -#      %a{:href=>"#"} Сто лучших ответов...
+            #line_news
+              %p
+                != truncate(sanitize(@top_article.body, tags: []), length: 150, ommission: '.')
+                = link_to 'читать дальше...', article_path(@top_article), title: @top_article.title
+              %ul{style: 'margin-left:150px;'}
+                - @menu_articles[0..2].each do |art|
+                  %li= link_to art.title, article_path(art), title: art.seo_title
+              %ul
+                - @menu_articles[3..5].each do |art|
+                  %li= link_to art.title, article_path(art), title: art.seo_title
             %br/
             %br/
             %br/
@@ -74,17 +60,12 @@
     #footer
       #footer_center
         #logo_footer
-          %h6
-            = link_to 'ARTLevel_Design', :root
+          %h6= link_to 'ARTLevel_Design', :root
         #footer-menu
           %ul
-            %li
-              = link_to 'главная', :root
-            %li
-              = link_to 'услуги', article_path(Article.find_by_slug('uslugi'))
-            %li
-              = link_to 'контакты', article_path(Article.find_by_slug('kontakty'))
-        %p &copy; ARTLevelDesign. Все права защищены.Разработчик: ARTLevelDesign
+            - @top_menu.each do |art|
+              %li= link_to art.title, article_path(art), title: art.seo_title
+        %p &copy; MLIP. Все права защищены.Разработчик: mlip.ru
         #line_footer
           %img{:src=>"/assets/line_footer.gif", :height=>"50", :width=>"2", :alt=>"полоса"}
     %script{type: "text/javascript"}

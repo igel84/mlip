@@ -1,0 +1,12 @@
+#welcom
+	%h1= content_tag(:span, 'С') + 'труктура сайта'
+	%br/
+	%ul.tree
+		- @articles = Article.roots
+		- if @articles != []
+			- @articles.each do |art_root|
+				%li= link_to art_root.title, article_path(art_root), title: art_root.title
+				- if art_root.children != []
+					%ul
+						- art_root.children.each do |art|
+							%li= link_to truncate(art.title, ommission: '...', length: 50), article_path(art), title: art.title
