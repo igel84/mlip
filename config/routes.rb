@@ -1,4 +1,6 @@
 InitialRelease::Application.routes.draw do
+  get '/users/sign_up' => 'Articles#show', id: 1
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
@@ -6,7 +8,6 @@ InitialRelease::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   root :to => 'Articles#show', id: 1
-
   resources :articles do
     get :tree, :on => :collection
   end
