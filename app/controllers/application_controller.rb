@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   		@top_menu = []
   		@top_menu << Article.find(1)
   		@top_menu << Article.find_by_slug('uslugi')
+      @top_menu << Article.find_by_slug('portfolio')
   		@top_menu << Article.find_by_slug('kontakty')
   	end
 
