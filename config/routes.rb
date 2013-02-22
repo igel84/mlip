@@ -8,19 +8,11 @@ InitialRelease::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   root :to => 'Articles#show', id: 1
-<<<<<<< HEAD
 
   resources :articles do
     get :tree, :on => :collection
   end
 
-=======
-
-  resources :articles do
-    get :tree, :on => :collection
-  end
-
->>>>>>> 449474eea34d4ff0d6a1281820e738a91efed93b
   resources :galeries
   # The priority is based upon order of creation:
   # first created -> highest priority.
