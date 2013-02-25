@@ -3,7 +3,8 @@ $(document).ready(function () {
   $('#welcom img').each(function(){
     var href = $(this).attr('src').replace('content', 'original');
     var title = $(this).attr('alt');
-    $(this).wrap('<a href="'+href+'" class="fancybox" title="'+title+'"></a>');
+    var rel = $(this).attr('class');
+    $(this).wrap('<a href="'+href+'" class="fancybox" title="'+title+'" rel="'+rel+'"></a>');
   });
 
   $('#welcom .fancybox').fancybox({
@@ -19,4 +20,11 @@ $(document).ready(function () {
     prevEffect: 'fade',
     nextEffect: 'fade',
   });
+
+  $("a[rel=portfolio]").fancybox({
+    'transitionIn'    : 'none',
+    'transitionOut'   : 'none',
+    'titlePosition'   : 'over'
+  });
+
 });

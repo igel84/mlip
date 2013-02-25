@@ -98,6 +98,11 @@ namespace :deploy do
   desc "Start application"
   task :start, :roles => :app do
     run unicorn_start_cmd
+    #[ -f /var/run/unicorn/mlip.igel84.pid ] && kill -QUIT `cat /var/run/unicorn/mlip.igel84.pid`
+    #start
+    #ln -s /home/hosting_igel84/projects/mlip/releases/initial_release /home/hosting_igel84/projects/mlip/current;cd /home/hosting_igel84/projects/aquamarket/current
+    #bundle install --path ../../shared/gems;
+    #bundle exec unicorn_rails -Dc /etc/unicorn/mlip.igel84.rb
   end
 
   desc "Stop application"

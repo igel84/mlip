@@ -8,6 +8,7 @@ InitialRelease::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   root :to => 'Articles#show', id: 1
+
   resources :articles do
     get :tree, :on => :collection
   end
