@@ -58,6 +58,21 @@ InitialRelease::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.smtp_settings = {
+        :openssl_verify_mode  => 'none',
+        :enable_starttls_auto => true, #works in ruby 1.8.7 and above
+        :address => 'smtp.locum.ru',
+        :port => 2525,
+        #:domain => 'smtp.locum.ru',
+        :authentication => :plain,
+        :user_name => 'admin@mlip.ru',
+        :password => 'dtktc7788'#,
+        #:enable_starttls_auto => true
+    }
+
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
